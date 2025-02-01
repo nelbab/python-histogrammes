@@ -16,16 +16,16 @@ L'objectif de ce projet est de créer des histogrammes informatifs pour illustre
 
 ## 🛠️ Technologies utilisées :
 
-###    • Python : 
+###    • Python <img style="margin: 10px" src="images/python.png" alt="Python" title="Python" height="20" />: 
     Langage de programmation pour le traitement des données et la création des graphiques.
 
-###    • Pandas : 
+###    • Pandas <img style="margin: 10px" src="images/pandas.png" alt="Pandas" title="Pandas" height="20" />: 
     Bibliothèque Python pour la manipulation et l'analyse des données.
 
-###    • Matplotlib  : 
+###    • Matplotlib  <img style="margin: 10px" src="images/matplotlib.png" alt="Matplotlib" title="Matplotlib" height="20" />: 
     Bibliothèque pour la création des histogrammes et des visualisations graphiques.
     
-###    • Numpy : 
+###    • Numpy <img style="margin: 10px" src="images/numpy.png" alt="Numpy" title="Numpy" height="20" />: 
     Bibliothèque pour langage de programmation Python, destinée à manipuler des matrices ou tableaux multidimensionnels ainsi que des fonctions mathématiques opérant sur ces tableaux. 
 
 <br />
