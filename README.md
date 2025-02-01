@@ -50,7 +50,7 @@ L'objectif de ce projet est de créer des histogrammes informatifs pour illustre
 <br />
 
 ## 🔍 Résultat attendu :
-
+A voir sur mon site ici : <a href="http://nelly.babin.free.fr/meteo/index.php" target="_blank" title="Météo sur mon site perso">Météo sur mon site perso</a><br />
 L'utilisateur voit un graphique avec des barres représentant la somme des précipitations du jour pour chaque mois et les cumules des mois de l'année.<br /> 
 Il peut sélectionner le mois ou l’année pour explorer les différentes périodes.
 
