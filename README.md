@@ -59,3 +59,19 @@ Il peut sélectionner le mois ou l’année pour explorer les différentes péri
 ## 🎯Conclusion :
 
 Ce projet offre une manière simple et efficace de créer des graphiques des précipitations au fil du temps pour mon site web.
+<br /><br />
+
+## 🌧️ Evolution : Graphiques dynamiques avec Chart.js
+
+- Découverte de `Chart.js` <a href="https://www.chartjs.org/" target="_blank"><img style="margin: 10px" src="images/Chartjs.png" alt="Chartjs" title="Chartjs" height="25" /></a>
+- Ajouter de fonctions `Python` pour générer un fichier `sql` avec la requête pour insérer les données dans la base de données.
+- Créer des graphiques interactifs
+- Ajout de nouveaux graphiques ...
+<br /><br />
+<a href="http://nelly.babin.free.fr/meteo/dynamique.php" target="_blank" title="Histogramme d'un mois">Histogramme d'un mois </a>
+<br /><br />
+<a href="http://nelly.babin.free.fr/meteo/comparaison.php" target="_blank" title="Courbes comparatives de pluie">Courbes comparatives de pluie </a>
+<br /><br />
+<a href="http://nelly.babin.free.fr/meteo/cumuls_annuels.php" target="_blank" title="Cumuls annuels">Cumuls annuels</a>
+<br /><br />
+<a href="https://github.com/nelbab/python-histogrammes/blob/main/graphes-precipitation.md" target="_blank" title="Détail du développement en Chart.js">Détail du développement `Chart.js` </a>  <br/>
