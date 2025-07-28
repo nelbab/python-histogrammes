@@ -67,16 +67,16 @@ Ce projet offre une manière simple et efficace de créer des graphiques des pr�
 - Ajouter de fonctions `Python` pour générer un fichier `sql` avec la requête pour insérer les données dans la base de données.
 - Créer des graphiques interactifs
 - Ajout de nouveaux graphiques ...
-<br /><br />
-<a href="http://nelly.babin.free.fr/meteo/dynamique.php" target="_blank" title="Histogramme d'un mois">Histogramme d'un mois </a>
-<br /><br />
-<a href="http://nelly.babin.free.fr/meteo/comparaison.php" target="_blank" title="Courbes mensuelles comparatives de pluie">Courbes mensuelles comparatives de pluie </a>
-<br /><br />
-<a href="http://nelly.babin.free.fr/meteo/cumuls_mensuels.php" target="_blank" title="Cumuls mensuels">Cumuls mensuels</a>
-<br /><br />
-<a href="http://nelly.babin.free.fr/meteo/cumuls_annuels.php" target="_blank" title="Cumuls annuels">Cumuls annuels</a>
-<br /><br />
-<a href="http://nelly.babin.free.fr/meteo/comparaison-annuel.php" target="_blank" title="Courbes annuelles comparatives de pluie">Courbes annuelles comparatives de pluie</a>
-<br /><br />
+<br />
+
+| 📄 Page                         | 🔗 Lien                                                                 | 📝 Description                                             |
+| ------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------------------------- |
+| Histogramme d’un mois           | [Voir la page](http://nelly.babin.free.fr/meteo/dynamique.php)          | Histogramme pluie/neige pour un mois donné                 |
+| Courbes mensuelles comparatives | [Voir la page](http://nelly.babin.free.fr/meteo/comparaison.php)        | Comparaison de la pluie sur un mois entre plusieurs années |
+| Cumuls mensuels                 | [Voir la page](http://nelly.babin.free.fr/meteo/cumuls_mensuels.php)    | Cumuls pluie/neige par mois sur une année                  |
+| Cumuls annuels                  | [Voir la page](http://nelly.babin.free.fr/meteo/cumuls_annuels.php)     | Cumuls pluie/neige par année sur une période               |
+| Courbes annuelles comparatives  | [Voir la page](http://nelly.babin.free.fr/meteo/comparaison-annuel.php) | Comparaison annuelle de la pluie sur 12 mois               |
+
+<br />
 📝 Dépôt du projet
 <a href="https://github.com/nelbab/python-histogrammes/blob/main/graphes-precipitation.md" target="_blank" title="Détail du développement en Chart.js">Détail du développement `Chart.js` </a>  <br/>

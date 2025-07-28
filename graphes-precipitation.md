@@ -11,13 +11,11 @@ Améliorations de mes graphiques de précipitations.<br>
 ## 2. 👩‍💻 Conception
 
 - Ajout d'une table pour le relevé journalier des jours avec pluie et/ou neige avec possibilité de saisir un commentaire (orage, grêle,...).
-- Ajouter d'un graphique comparatif d'un mois entre différentes années.
-- Ajouter d'un graphique comparatif entre différentes années.
+- Ajout d'un graphique comparatif d'un mois entre différentes années.
+- Ajout d'un graphique comparatif entre différentes années.
 - Curseur interactif avec relevé de pluie et/ou de neige, commentaire.
-- Téléchargement du graphique au format PNG ou en PDF.
-- Export en PNG du graphique.
-- Export en PDF du graphique avec les statistique.
-- Ajout de statistiques (moyenne, maximun, minimun).
+- Téléchargement des graphiques en PNG ou PDF, avec inclusion des statistiques en PDF.
+- Ajout de statistiques (moyenne, maximum, minimum).
 - Ajout de tableaux statistiques.
 
 ## 3. 🛠️ Technologies utilisées : 
@@ -111,18 +109,16 @@ Améliorations de mes graphiques de précipitations.<br>
   - Moyenne (mm)
 <br /><br />
 
-## 5. Voici les liens :
+## 🔗 5. Voici les liens :
 
-<a href="http://nelly.babin.free.fr/meteo/dynamique.php" target="_blank" title="Histogramme d'un mois">Histogramme d'un mois </a>
-<br /><br />
-<a href="http://nelly.babin.free.fr/meteo/comparaison.php" target="_blank" title="Courbes mensuelles comparatives de pluie">Courbes mensuelles comparatives de pluie </a>
-<br /><br />
-<a href="http://nelly.babin.free.fr/meteo/cumuls_mensuels.php" target="_blank" title="Cumuls mensuels">Cumuls mensuels</a>
-<br /><br />
-<a href="http://nelly.babin.free.fr/meteo/cumuls_annuels.php" target="_blank" title="Cumuls annuels">Cumuls annuels</a>
-<br /><br />
-<a href="http://nelly.babin.free.fr/meteo/comparaison-annuel.php" target="_blank" title="Courbes annuelles comparatives de pluie">Courbes annuelles comparatives de pluie</a>
-<br /><br />
+| 📄 Page                         | 🔗 Lien                                                                 | 📝 Description                                             |
+| ------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------------------------- |
+| Histogramme d’un mois           | [Voir la page](http://nelly.babin.free.fr/meteo/dynamique.php)          | Histogramme pluie/neige pour un mois donné                 |
+| Courbes mensuelles comparatives | [Voir la page](http://nelly.babin.free.fr/meteo/comparaison.php)        | Comparaison de la pluie sur un mois entre plusieurs années |
+| Cumuls mensuels                 | [Voir la page](http://nelly.babin.free.fr/meteo/cumuls_mensuels.php)    | Cumuls pluie/neige par mois sur une année                  |
+| Cumuls annuels                  | [Voir la page](http://nelly.babin.free.fr/meteo/cumuls_annuels.php)     | Cumuls pluie/neige par année sur une période               |
+| Courbes annuelles comparatives  | [Voir la page](http://nelly.babin.free.fr/meteo/comparaison-annuel.php) | Comparaison annuelle de la pluie sur 12 mois               |
+<br />
 
 ## 6. 🖥️ Captures d'écrans : 
 
@@ -139,40 +135,46 @@ Améliorations de mes graphiques de précipitations.<br>
 <img style="margin: 10px" src="images/comparaison_annuelle.png" alt="Cumuls annuels" title="Cumuls annuels" height="200px" />
 <br /><br />
 
-## 7. 📝 Codes spécifiques
+## 7. 🧩 Codes spécifiques utilisés
+Cette section présente les extraits de code essentiels pour l’intégration des graphiques dynamiques avec Chart.js, ainsi que les personnalisations apportées pour enrichir l’interactivité et la lisibilité.
 
-- Importation des librairies :
+### a. Importation des librairies
 ```
+<!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Plugin pour l'affichage des données sur les barres -->
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 ```
-- Insertion du graphique dans la page, exemple :
+### b. Insertion du graphique dans la page
 ```
 <div style="margin: 20px 0;">
-    <canvas id="chart" width="100%" height="500"></canvas>
+  <canvas id="chart" width="100%" height="500"></canvas>
 </div>
 ```
-- Types de graphiques utilisés :
+### c. Types de graphiques utilisés
 ```
-type: 'bar', 
-et 
-type: 'line',
+type: 'bar'   // Pour les histogrammes
+type: 'line'  // Pour les courbes comparatives
 ```
-- Ajout de tooltips avec données et commentaire au survol, exemple :
+### d. Tooltips avec commentaires dynamiques
+Affichage de commentaires personnalisés (orage, grêle...) au survol des données :
+
 ```
 tooltip: {
   mode: 'index',
   intersect: false,
   callbacks: {
-      afterBody: function(context) {
-          const index = context[0].dataIndex;
-          const com = commentaires[index];
-          return com ? '📝 ' + com : '';
-      }
+    afterBody: function(context) {
+      const index = context[0].dataIndex;
+      const com = commentaires[index];
+      return com ? '📝 ' + com : '';
+    }
   }
-},
+}
 ```
-- Création de plusieurs datasets pour avoir 2 barres ou plusieurs courbes, exemple :
+### e. Création dynamique de plusieurs datasets
+Exemple PHP + JavaScript pour générer plusieurs courbes selon les années sélectionnées :
+
 ```
 const datasetsMensuel = [
   <?php
@@ -190,14 +192,134 @@ const datasetsMensuel = [
   ?>
 ];
 ```
+### f. Configuration du graphique
 ```
 const configMensuel = {
   type: 'line',
   data: {
-      labels: labelsMois,
-      datasets: datasetsMensuel
+    labels: labelsMois,
+    datasets: datasetsMensuel
   },
-  ...
+  options: {
+    responsive: true,
+    plugins: {
+      tooltip: { /* configuration des tooltips */ },
+      legend: { position: 'top' }
+    },
+    interaction: {
+      mode: 'nearest',
+      axis: 'x',
+      intersect: false
+    }
+  }
+};
+```
+### g. Export du graphique en PDF avec jsPDF
+📥 Importation de la librairie jsPDF :
+```
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+```
+🧾 Fonction JavaScript pour générer et télécharger le PDF :
+```
+function downloadPDF() {
+    console.log('PDF function called');
+    try {
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF();
+
+        // Titre principal
+        pdf.setFontSize(16);
+        pdf.text('Precipitations & Neige - <?php echo $moisLibelle . " " . $annee; ?>', 20, 20);
+
+        // Graphique depuis le canvas
+        const canvas = document.getElementById('chart');
+        const imgData = canvas.toDataURL('image/png');
+        pdf.addImage(imgData, 'PNG', 15, 30, 180, 100);
+
+        // Statistiques
+        let yPos = 145;
+        pdf.setFontSize(12);
+        pdf.setFont(undefined, 'bold');
+        pdf.text('Statistiques générales :', 20, yPos);
+
+        yPos += 8;
+        pdf.setFontSize(10);
+        pdf.setFont(undefined, 'normal');
+        pdf.text('Total pluie : <?php echo $totalPluie; ?> mm', 25, yPos); yPos += 6;
+        pdf.text('Total neige : <?php echo $totalNeige; ?> cm', 25, yPos); yPos += 6;
+        pdf.text('Moyenne pluie : <?php echo $avgPluie; ?> mm/jour', 25, yPos); yPos += 6;
+        pdf.text('Moyenne neige : <?php echo $avgNeige; ?> cm/jour', 25, yPos);
+
+        // Extrêmes
+        yPos += 10;
+        pdf.setFontSize(12);
+        pdf.setFont(undefined, 'bold');
+        pdf.text('Extrêmes :', 20, yPos);
+
+        yPos += 8;
+        pdf.setFontSize(10);
+        pdf.setFont(undefined, 'normal');
+
+        <?php if ($aPluie): ?>
+        pdf.text('Maximum pluie : <?php echo $maxPluie; ?> mm (le <?php echo $jourMaxPluie; ?>)', 25, yPos); yPos += 6;
+        pdf.text('Minimum pluie : <?php echo $minPluie; ?> mm (le <?php echo $jourMinPluie; ?>)', 25, yPos); yPos += 6;
+        <?php else: ?>
+        pdf.text('Maximum pluie : 0 mm (aucune pluie)', 25, yPos); yPos += 6;
+        pdf.text('Minimum pluie : 0 mm (aucune pluie)', 25, yPos); yPos += 6;
+        <?php endif; ?>
+
+        <?php if ($aNeige): ?>
+        pdf.text('Maximum neige : <?php echo $maxNeige; ?> cm (le <?php echo $jourMaxNeige; ?>)', 25, yPos); yPos += 6;
+        pdf.text('Minimum neige : <?php echo $minNeige; ?> cm (le <?php echo $jourMinNeige; ?>)', 25, yPos); yPos += 6;
+        <?php else: ?>
+        pdf.text('Maximum neige : 0 cm (aucune neige)', 25, yPos); yPos += 6;
+        pdf.text('Minimum neige : 0 cm (aucune neige)', 25, yPos); yPos += 6;
+        <?php endif; ?>
+
+        // Date en bas de page
+        pdf.setFontSize(8);
+        pdf.setFont(undefined, 'italic');
+        pdf.text('Généré le ' + new Date().toLocaleDateString('fr-FR'), 20, 285);
+
+        // Sauvegarde du fichier
+        pdf.save('precipitations_neige_<?php echo $mois . "_" . $annee; ?>.pdf');
+        console.log('PDF download completed');
+
+    } catch (error) {
+        console.error('Erreur PDF:', error);
+        alert('Erreur : ' + error.message);
+    }
+}
+```
+📥 Bouton d’export PDF <br>
+Voici le bouton déclenchant la génération du fichier PDF à partir du graphique et des données :
+```
+<button onclick="downloadPDF()" class="boutonMeteo">📥 Télécharger en PDF</button>
+```
+### h. Interface utilisateur : Sélection dynamique d’années
+Cette interface permet à l’utilisateur de sélectionner les années à comparer (jusqu’à 7), avec une indication visuelle des cases cochées et un conseil UX :
+
+```
+<div class="containerMenu">
+    <form method="get">
+        <label class="A1">Sélectionnez les années à comparer (7 maximum) :</label>
+        <div class="selection-annees">
+            <?php
+            for ($a = $anneeMinDisponible; $a <= $anneeMaxDisponible; $a++) {
+                $checked = in_array($a, $annees_valides) ? 'checked' : '';
+                $class_checked = in_array($a, $annees_valides) ? 'checked' : '';
+                echo "<div class='annee-checkbox $class_checked'>";
+                echo "<input type='checkbox' name='annees[]' value='$a' id='annee_$a' $checked onchange='updateCheckboxStyle(this)'>";
+                echo "<label for='annee_$a'>$a</label>";
+                echo "</div>";
+            }
+            ?>
+        </div>
+        💡 Conseil : Sélectionnez 3-5 années pour une meilleure lisibilité<br /><br />
+        <button type="submit" class="boutonMeteo">Comparer</button>
+    </form>
+</div>
 ```
 <br />
 
