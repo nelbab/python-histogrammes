@@ -1,4 +1,4 @@
-# 🌧️ Graphiques dynamiques avec Chart.js ❄️ #
+# 🌧️ Graphiques dynamiques avec Chart.js ❄️
 
 ## 1. 📊 Objectifs de ce projet
 
@@ -36,11 +36,11 @@ Améliorations de mes graphiques de précipitations.<br>
 - Histogramme avec 2 barres du mois sélectionné de pluie et de neige
 - Statistiques : 
   - 🌧️ Total pluie (mm)
-  - 📊 🌧️ Moyenne quotidienne pluie (mm)
+  - 📊 Moyenne quotidienne pluie (mm)
   - 📈 Pluie max (mm)
   - 📉 Pluie min (mm)
   - ❄️ Total neige (cm)
-  - 📊 ❄️ Moyenne neige (cm)
+  - 📊 Moyenne neige (cm)
   - 📈 Neige max (cm)
   - 📉 Neige min (cm)
   
@@ -49,15 +49,15 @@ Améliorations de mes graphiques de précipitations.<br>
 - Courbes pour chaque année
 - Limitation de l'affichage à 7 années
 - Conseil : Sélectionnez 3-5 années pour une meilleure lisibilité
-- Statistiques : 
-  - Cumul moyen mensuel (mm)
-  - Médiane journalière (mm)
-- Records :
-  - Année la plus pluvieuse et (mm)
-  - Année la plus sèche et (mm)
+- 📈 Statistiques : 
+  - 🌧️ Cumul moyen mensuel (mm)
+  - 📊 Médiane journalière (mm)
+- 🏆 Records :
+  - 🌧️ Année la plus pluvieuse et (mm)
+  - ⛱️Année la plus sèche et (mm)
   - Record journalier (mm)
   - Date du record
-- Tableau de détails par Année
+- 📅Tableau de détails par Année
   - Cumul (mm)
   - Moyenne/jour (mm)
   - Jours de pluie
@@ -68,44 +68,44 @@ Améliorations de mes graphiques de précipitations.<br>
 - Histogramme avec 2 barres du mois sélectionné de pluie et de neige
 - Statistiques : 
   - 🌧️ Total annuel (mm)
-  - 📊 🌧️ Moyenne mensuelle (mm)
-  - 🌧️ Maximum (mm) (mois)
-  - 🌧️ Minimum (mm) (mois)
+  - 📊 Moyenne mensuelle (mm)
+  - 📈 Maximum (mm) (mois)
+  - 📉 Minimum (mm) (mois)
   - ❄️ Total annuel (cm)
-  - 📊 ❄️ Moyenne mensuelle (cm)
-  - ❄️ Maximum (cm) (mois)
-  - ❄️ Minimum (cm) (mois)
+  - 📊 Moyenne mensuelle (cm)
+  - 📈 Maximum (cm) (mois)
+  - 📉 Minimum (cm) (mois)
 
 ### d. Cumuls annuels
 - Histogramme avec 2 barres par années sélectionnées de pluie et de neige
 - Statistiques : 
   - 🌧️ Total période (mm)
-  - 📊 🌧️ Moyenne annuelle (mm)
-  - 🌧️ Maximum (mm) (mois)
-  - 🌧️ Minimum (mm) (mois)
+  - 📊 Moyenne annuelle (mm)
+  - 📈 Maximum (mm) (mois)
+  - 📉 Minimum (mm) (mois)
   - ❄️ Total période (cm)
-  - 📊 ❄️ Moyenne annuelle (cm)
-  - ❄️ Maximum (cm) (mois)
-  - ❄️ Minimum (cm) (mois) 
+  - 📊 Moyenne annuelle (cm)
+  - 📈 Maximum (cm) (mois)
+  - 📉 Minimum (cm) (mois) 
 
 ### e. Courbes annuelles comparatives de pluie
 - Courbes sur 12 mois pour plusieurs années
 - Courbes pour chaque année
 - Limitation de l'affichage à 7 années
 - Conseil : Sélectionnez 3-5 années pour une meilleure lisibilité
-- Statistiques : 
-  - Cumul moyen annuel (mm)
-- Records :
-  - Année la plus pluvieuse et (mm)
-  - Année la plus sèche et (mm)
+- 📈 Statistiques : 
+  - 🌧️ Cumul moyen annuel (mm)
+- 🏆 Records :
+  - 🌧️ Année la plus pluvieuse et (mm)
+  - ⛱️Année la plus sèche et (mm)
   - Ecart (mm)
-- Tableau de détails par Année
+- 📅Tableau de détails par Année
   - Total annuel (mm)
   - Moyenne mensuelle (mm)
   - Jours de pluie
   - Maximum journalier (mm)
   - Ecart à la moyenne
-- Moyennes Mensuelles sur la Période
+- 📅Moyennes Mensuelles sur la Période
   - Mois
   - Différentes années (mm)
   - Moyenne (mm)
@@ -139,9 +139,71 @@ Améliorations de mes graphiques de précipitations.<br>
 <img style="margin: 10px" src="images/comparaison_annuelle.png" alt="Cumuls annuels" title="Cumuls annuels" height="200px" />
 <br /><br />
 
-## 7. 📝 Conclusion
+## 7. 📝 Codes spécifiques
 
-Ce projet m’a permis d’explorer en profondeur les possibilités offertes par `Chart.js` pour créer des <b>graphiques de précipitations dynamiques, interactifs et esthétiques</b>. Grâce à l’intégration des <b>données issues d’une base de données</b>, les visualisations sont désormais <b>actualisées en temps réel</b>. L’ajout d’un <b>graphique comparatif, d’un curseur interactif</b> ainsi que de les <b>fonctions de téléchargement au format PNG et en PDF</b> enrichissent l’expérience utilisateur et améliorent la lisibilité des données.
+- Importation des librairies :
+```
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+```
+- Insertion du graphique dans la page, exemple :
+```
+<div style="margin: 20px 0;">
+    <canvas id="chart" width="100%" height="500"></canvas>
+</div>
+```
+- Types de graphiques utilisés :
+```
+type: 'bar', 
+et 
+type: 'line',
+```
+- Ajout de tooltips avec données et commentaire au survol, exemple :
+```
+tooltip: {
+  mode: 'index',
+  intersect: false,
+  callbacks: {
+      afterBody: function(context) {
+          const index = context[0].dataIndex;
+          const com = commentaires[index];
+          return com ? '📝 ' + com : '';
+      }
+  }
+},
+```
+- Création de plusieurs datasets pour avoir 2 barres ou plusieurs courbes, exemple :
+```
+const datasetsMensuel = [
+  <?php
+  $i = 0;
+  foreach ($annees_valides as $annee) {
+      echo "{ label: '$annee', data: [";
+      for ($mois = 1; $mois <= 12; $mois++) {
+          $valeur = $donnees_mensuelles[$annee][$mois];
+          echo number_format($valeur, 1) . ($mois < 12 ? ',' : '');
+      }
+      $couleur = $couleurs[$i % count($couleurs)];
+      echo "], borderColor: '$couleur', backgroundColor: '$couleur', fill: false, tension: 0.3 },";
+      $i++;
+  }
+  ?>
+];
+```
+```
+const configMensuel = {
+  type: 'line',
+  data: {
+      labels: labelsMois,
+      datasets: datasetsMensuel
+  },
+  ...
+```
+<br />
+
+## 8. 🎯 Conclusion
+
+Ce projet m’a permis d’explorer en profondeur les possibilités offertes par `Chart.js` pour créer des <b>graphiques de précipitations dynamiques, interactifs et esthétiques</b>. Grâce à l’intégration des <b>données issues d’une base de données</b>, les visualisations sont désormais actualisées en temps réel. L’ajout d’un graphique comparatif, d’un curseur interactif ainsi que de les fonctions de téléchargement au format PNG et en PDF <b>enrichissent l’expérience utilisateur et améliorent la lisibilité des données</b>.
 
 En somme, ce projet a été une excellente opportunité pour :
 

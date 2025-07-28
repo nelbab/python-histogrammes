@@ -70,8 +70,13 @@ Ce projet offre une manière simple et efficace de créer des graphiques des pr�
 <br /><br />
 <a href="http://nelly.babin.free.fr/meteo/dynamique.php" target="_blank" title="Histogramme d'un mois">Histogramme d'un mois </a>
 <br /><br />
-<a href="http://nelly.babin.free.fr/meteo/comparaison.php" target="_blank" title="Courbes comparatives de pluie">Courbes comparatives de pluie </a>
+<a href="http://nelly.babin.free.fr/meteo/comparaison.php" target="_blank" title="Courbes mensuelles comparatives de pluie">Courbes mensuelles comparatives de pluie </a>
+<br /><br />
+<a href="http://nelly.babin.free.fr/meteo/cumuls_mensuels.php" target="_blank" title="Cumuls mensuels">Cumuls mensuels</a>
 <br /><br />
 <a href="http://nelly.babin.free.fr/meteo/cumuls_annuels.php" target="_blank" title="Cumuls annuels">Cumuls annuels</a>
 <br /><br />
+<a href="http://nelly.babin.free.fr/meteo/comparaison-annuel.php" target="_blank" title="Courbes annuelles comparatives de pluie">Courbes annuelles comparatives de pluie</a>
+<br /><br />
+📝 Dépôt du projet
 <a href="https://github.com/nelbab/python-histogrammes/blob/main/graphes-precipitation.md" target="_blank" title="Détail du développement en Chart.js">Détail du développement `Chart.js` </a>  <br/>
