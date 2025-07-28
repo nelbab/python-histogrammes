@@ -113,11 +113,11 @@ Améliorations de mes graphiques de précipitations.<br>
 
 | 📄 Page                         | 🔗 Lien                                                                 | 📝 Description                                             |
 | ------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------------------------- |
-| Histogramme d’un mois           | [Voir la page](http://nelly.babin.free.fr/meteo/dynamique.php)          | Histogramme pluie/neige pour un mois donné                 |
-| Courbes mensuelles comparatives | [Voir la page](http://nelly.babin.free.fr/meteo/comparaison.php)        | Comparaison de la pluie sur un mois entre plusieurs années |
-| Cumuls mensuels                 | [Voir la page](http://nelly.babin.free.fr/meteo/cumuls_mensuels.php)    | Cumuls pluie/neige par mois sur une année                  |
-| Cumuls annuels                  | [Voir la page](http://nelly.babin.free.fr/meteo/cumuls_annuels.php)     | Cumuls pluie/neige par année sur une période               |
-| Courbes annuelles comparatives  | [Voir la page](http://nelly.babin.free.fr/meteo/comparaison-annuel.php) | Comparaison annuelle de la pluie sur 12 mois               |
+| Histogramme d’un mois           | <a href="http://nelly.babin.free.fr/meteo/dynamique.php" target="_blank">Voir la page</a>          | Histogramme pluie/neige pour un mois donné                 |
+| Courbes mensuelles comparatives | <a href="http://nelly.babin.free.fr/meteo/comparaison.php" target="_blank">Voir la page</a>        | Comparaison de la pluie sur un mois entre plusieurs années |
+| Cumuls mensuels                 | <a href="http://nelly.babin.free.fr/meteo/cumuls_mensuels.php" target="_blank">Voir la page</a>    | Cumuls pluie/neige par mois sur une année                  |
+| Cumuls annuels                  | <a href="http://nelly.babin.free.fr/meteo/cumuls_annuels.php" target="_blank">Voir la page</a>     | Cumuls pluie/neige par année sur une période               |
+| Courbes annuelles comparatives  | <a href="http://nelly.babin.free.fr/meteo/comparaison-annuel.php" target="_blank">Voir la page</a> | Comparaison annuelle de la pluie sur 12 mois               |
 <br />
 
 ## 6. 🖥️ Captures d'écrans : 
@@ -136,7 +136,7 @@ Améliorations de mes graphiques de précipitations.<br>
 <br /><br />
 
 ## 7. 🧩 Codes spécifiques utilisés
-Cette section présente les extraits de code essentiels pour l’intégration des graphiques dynamiques avec Chart.js, ainsi que les personnalisations apportées pour enrichir l’interactivité et la lisibilité.
+Cette section présente les extraits de code essentiels pour l’intégration des graphiques dynamiques avec `Chart.js`, ainsi que les personnalisations apportées pour enrichir l’interactivité et la lisibilité.
 
 ### a. Importation des librairies
 ```
@@ -173,7 +173,7 @@ tooltip: {
 }
 ```
 ### e. Création dynamique de plusieurs datasets
-Exemple PHP + JavaScript pour générer plusieurs courbes selon les années sélectionnées :
+Exemple `PHP` + `JavaScript` pour générer plusieurs courbes selon les années sélectionnées :
 
 ```
 const datasetsMensuel = [
@@ -193,34 +193,57 @@ const datasetsMensuel = [
 ];
 ```
 ### f. Configuration du graphique
+Exemple du graphique de comparaison des Années :
 ```
 const configMensuel = {
   type: 'line',
   data: {
-    labels: labelsMois,
-    datasets: datasetsMensuel
+      labels: labelsMois,
+      datasets: datasetsMensuel
   },
   options: {
-    responsive: true,
-    plugins: {
-      tooltip: { /* configuration des tooltips */ },
-      legend: { position: 'top' }
-    },
-    interaction: {
-      mode: 'nearest',
-      axis: 'x',
-      intersect: false
-    }
+      responsive: true,
+      animation: { duration: 0 },
+      plugins: {
+          title: {
+              display: true,
+              text: "Évolution mensuelle des précipitations"
+          },
+          tooltip: {
+              mode: 'index',
+              intersect: false,
+              callbacks: {
+                  label: function(context) {
+                      return context.dataset.label + ': ' + context.parsed.y + ' mm';
+                  }
+              }
+          }
+      },
+      scales: {
+          y: {
+              beginAtZero: true,
+              title: {
+                  display: true,
+                  text: "mm de pluie"
+              }
+          },
+          x: {
+              title: {
+                  display: true,
+                  text: "Mois"
+              }
+          }
+      }
   }
 };
 ```
 ### g. Export du graphique en PDF avec jsPDF
-📥 Importation de la librairie jsPDF :
+📥 <b>Importation de la librairie `jsPDF` : </b>
 ```
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 ```
-🧾 Fonction JavaScript pour générer et télécharger le PDF :
+🧾 <b>Fonction JavaScript pour générer et télécharger le PDF : </b>
 ```
 function downloadPDF() {
     console.log('PDF function called');
@@ -292,7 +315,7 @@ function downloadPDF() {
     }
 }
 ```
-📥 Bouton d’export PDF <br>
+📥 <b>Bouton d’export PDF :</b> <br>
 Voici le bouton déclenchant la génération du fichier PDF à partir du graphique et des données :
 ```
 <button onclick="downloadPDF()" class="boutonMeteo">📥 Télécharger en PDF</button>
@@ -302,24 +325,36 @@ Cette interface permet à l’utilisateur de sélectionner les années à compar
 
 ```
 <div class="containerMenu">
-    <form method="get">
-        <label class="A1">Sélectionnez les années à comparer (7 maximum) :</label>
-        <div class="selection-annees">
-            <?php
-            for ($a = $anneeMinDisponible; $a <= $anneeMaxDisponible; $a++) {
-                $checked = in_array($a, $annees_valides) ? 'checked' : '';
-                $class_checked = in_array($a, $annees_valides) ? 'checked' : '';
-                echo "<div class='annee-checkbox $class_checked'>";
-                echo "<input type='checkbox' name='annees[]' value='$a' id='annee_$a' $checked onchange='updateCheckboxStyle(this)'>";
-                echo "<label for='annee_$a'>$a</label>";
-                echo "</div>";
-            }
-            ?>
-        </div>
-        💡 Conseil : Sélectionnez 3-5 années pour une meilleure lisibilité<br /><br />
-        <button type="submit" class="boutonMeteo">Comparer</button>
-    </form>
+  <form method="get">
+    <label class="A1">Sélectionnez les années à comparer (7 maximum) :</label>
+    <div class="selection-annees">
+      <?php
+      for ($a = $anneeMinDisponible; $a <= $anneeMaxDisponible; $a++) {
+          $checked = in_array($a, $annees_valides) ? 'checked' : '';
+          $class_checked = in_array($a, $annees_valides) ? 'checked' : '';
+          echo "<div class='annee-checkbox $class_checked'>";
+          echo "<input type='checkbox' name='annees[]' value='$a' id='annee_$a' $checked onchange='limitSelection(this)'>";
+          echo "<label for='annee_$a'>$a</label>";
+          echo "</div>";
+      }
+      ?>
+    </div>
+    💡 Conseil : Sélectionnez 3-5 années pour une meilleure lisibilité<br /><br />
+    <button type="submit" class="boutonMeteo">Comparer</button>
+  </form>
 </div>
+```
+🧾 <b>Fonction `JavaScript` pour limiter à 7 sélections maximum :</b>
+```
+function limitSelection(currentCheckbox) {
+  const checkedBoxes = document.querySelectorAll('.annee-checkbox input[type="checkbox"]:checked');
+  
+  if (currentCheckbox.checked && checkedBoxes.length > 7) {
+      currentCheckbox.checked = false;
+      alert('Vous ne pouvez sélectionner que 7 années maximum.');
+  }    
+  updateCheckboxStyle(currentCheckbox);
+}
 ```
 <br />
 
@@ -330,9 +365,6 @@ Ce projet m’a permis d’explorer en profondeur les possibilités offertes par
 En somme, ce projet a été une excellente opportunité pour :
 
 - Apprendre à manipuler `Chart.js` de manière avancée.
-
 - Rendre mes visualisations plus attractives et fonctionnelles.
-
 - Manipuler les données de ma base `MySQL`.
-
 - Manipuler des statistiques.

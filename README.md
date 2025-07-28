@@ -71,11 +71,11 @@ Ce projet offre une manière simple et efficace de créer des graphiques des pr�
 
 | 📄 Page                         | 🔗 Lien                                                                 | 📝 Description                                             |
 | ------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------------------------- |
-| Histogramme d’un mois           | [Voir la page](http://nelly.babin.free.fr/meteo/dynamique.php)          | Histogramme pluie/neige pour un mois donné                 |
-| Courbes mensuelles comparatives | [Voir la page](http://nelly.babin.free.fr/meteo/comparaison.php)        | Comparaison de la pluie sur un mois entre plusieurs années |
-| Cumuls mensuels                 | [Voir la page](http://nelly.babin.free.fr/meteo/cumuls_mensuels.php)    | Cumuls pluie/neige par mois sur une année                  |
-| Cumuls annuels                  | [Voir la page](http://nelly.babin.free.fr/meteo/cumuls_annuels.php)     | Cumuls pluie/neige par année sur une période               |
-| Courbes annuelles comparatives  | [Voir la page](http://nelly.babin.free.fr/meteo/comparaison-annuel.php) | Comparaison annuelle de la pluie sur 12 mois               |
+| Histogramme d’un mois           | <a href="http://nelly.babin.free.fr/meteo/dynamique.php" target="_blank">Voir la page</a>          | Histogramme pluie/neige pour un mois donné                 |
+| Courbes mensuelles comparatives | <a href="http://nelly.babin.free.fr/meteo/comparaison.php" target="_blank">Voir la page</a>        | Comparaison de la pluie sur un mois entre plusieurs années |
+| Cumuls mensuels                 | <a href="http://nelly.babin.free.fr/meteo/cumuls_mensuels.php" target="_blank">Voir la page</a>    | Cumuls pluie/neige par mois sur une année                  |
+| Cumuls annuels                  | <a href="http://nelly.babin.free.fr/meteo/cumuls_annuels.php" target="_blank">Voir la page</a>     | Cumuls pluie/neige par année sur une période               |
+| Courbes annuelles comparatives  | <a href="http://nelly.babin.free.fr/meteo/comparaison-annuel.php" target="_blank">Voir la page</a> | Comparaison annuelle de la pluie sur 12 mois               |
 
 <br />
 📝 Dépôt du projet
