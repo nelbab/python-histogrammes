@@ -358,7 +358,95 @@ function limitSelection(currentCheckbox) {
 ```
 <br />
 
-## 8. 🎯 Conclusion
+## 8. 🧩 Codes Python pour générer les requuêtes SQL pour insérer les données de la table precipitations
+
+### a. Origines des données
+- Depuis 2024, les rélevés sont saisis sur les fichiers `graphes_précipitations_2024.ipynb` et `graphes_précipitations_2025.ipynb`
+- Les années précédentes, les rélevés étaient saisis dans des fichiers Works .wks. Je les ai transformés en fichier .csv à l'aide de LibreOffice. 
+
+### b. Codes pour créer des fichiers .sql
+- Pour extraire les données des fichiers Python, j'ai ajouté le code suivant aux fichiers <a href="https://github.com/nelbab/python-histogrammes/blob/main/precipitation-2024/graphes_precipitations_2024.ipynb?short_path=76d5219" target="_blank" title="Fichier graphes_précipitations_2024">`graphes_précipitations_2025.ipynb`</a>et <a href="https://github.com/nelbab/python-histogrammes/blob/main/precipitation-2025/graphes_precipitations_2025.ipynb?short_path=d2859d0" target="_blank" title="Fichier graphes_précipitations_2025">`graphes_précipitations_2025.ipynb`</a> :
+```
+def generer_insertions_mysql(annee, donnees_precipitations):
+
+    insertions = []
+    
+    for mois, valeurs in donnees_precipitations.items():
+        for jour, quantite in enumerate(valeurs, 1):
+            # Ignorer les jours sans précipitations
+            if quantite == 0:
+                continue
+                
+            # Créer la date
+            date_str = f"{annee}-{mois:02d}-{jour:02d}"
+            
+            # Commentaire vide - vous les ajouterez manuellement
+            commentaire = ""
+            
+            # Créer la requête INSERT
+            insertion = f"('{date_str}', {quantite}, 0.0, '{commentaire}')"
+            insertions.append(insertion)
+    
+    return insertions
+
+def generer_fichier_sql(annee, donnees_precipitations, nom_fichier="insertions_precipitations.sql"):
+
+    insertions = generer_insertions_mysql(annee, donnees_precipitations)
+    
+    with open(nom_fichier, 'w', encoding='utf-8') as f:
+        f.write("-- Insertions des données de précipitations\n")
+        f.write(f"-- Généré automatiquement pour l'année {annee}\n\n")
+        f.write("INSERT INTO precipitations (date, quantite_mm, neige_cm, commentaire) VALUES\n")
+        
+        for i, insertion in enumerate(insertions):
+            if i == len(insertions) - 1:
+                f.write(f"{insertion};\n")  # Dernière ligne avec point-virgule
+            else:
+                f.write(f"{insertion},\n")
+    
+    print(f"Fichier SQL généré: {nom_fichier}")
+    print(f"{len(insertions)} insertions créées")
+
+def traiter_precipitations(annee):
+
+    # Récupérer automatiquement toutes vos variables y1, y2, etc.
+    donnees = {}
+    
+    # Chercher les variables y1, y2, etc.
+    import inspect
+    frame = inspect.currentframe()
+    try:
+        variables_globales = frame.f_back.f_globals
+        for var_name, var_value in variables_globales.items():
+            if var_name.startswith('y') and var_name[1:].isdigit():
+                mois = int(var_name[1:])
+                if isinstance(var_value, list):
+                    donnees[mois] = var_value
+    finally:
+        del frame
+    
+    print(f"Données trouvées pour {len(donnees)} mois:")
+    for mois in sorted(donnees.keys()):
+        jours_avec_pluie = sum(1 for x in donnees[mois] if x > 0)
+        print(f"   y{mois}: {len(donnees[mois])} jours total, {jours_avec_pluie} jours avec pluie")
+    
+    # Générer le fichier SQL
+    generer_fichier_sql(annee, donnees)
+    
+    return donnees
+```
+- Pour extraire les données des fichiers .csv, j'ai créé ce fichier `Python` `precipitations_import.sql`, <a href="https://github.com/nelbab/python-histogrammes/blob/main/meteo/meteo_converter.ipynb" target="_blank" title="Fichier meteo_converter">accessible ici</a>. <br>
+Ce code me permet d'ouvrir les fichiers et de traiter les données présentes.
+
+### c. Insersion dans la table precipitations
+Après avoir généré ces 3 fichiers .sql, j'ai pu inserer les données dans ma table `precipitations` à l'aide des requêtes :
+```
+INSERT INTO precipitations (date, quantite_mm, neige_cm, commentaire) VALUES ...
+```
+🎗️ Toutes les données ont été intégrées avec succès.
+<br /><br />
+
+## 9. 🎯 Conclusion
 
 Ce projet m’a permis d’explorer en profondeur les possibilités offertes par `Chart.js` pour créer des <b>graphiques de précipitations dynamiques, interactifs et esthétiques</b>. Grâce à l’intégration des <b>données issues d’une base de données</b>, les visualisations sont désormais actualisées en temps réel. L’ajout d’un graphique comparatif, d’un curseur interactif ainsi que de les fonctions de téléchargement au format PNG et en PDF <b>enrichissent l’expérience utilisateur et améliorent la lisibilité des données</b>.
 
