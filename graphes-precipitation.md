@@ -365,7 +365,7 @@ function limitSelection(currentCheckbox) {
 - Les années précédentes, les rélevés étaient saisis dans des fichiers Works .wks. Je les ai transformés en fichier .csv à l'aide de LibreOffice. 
 
 ### b. Codes pour créer des fichiers .sql
-- Pour extraire les données des fichiers Python, j'ai ajouté le code suivant aux fichiers <a href="https://github.com/nelbab/python-histogrammes/blob/main/precipitation-2024/graphes_precipitations_2024.ipynb?short_path=76d5219" target="_blank" title="Fichier graphes_précipitations_2024">`graphes_précipitations_2025.ipynb`</a>et <a href="https://github.com/nelbab/python-histogrammes/blob/main/precipitation-2025/graphes_precipitations_2025.ipynb?short_path=d2859d0" target="_blank" title="Fichier graphes_précipitations_2025">`graphes_précipitations_2025.ipynb`</a> :
+- Pour extraire les données des fichiers Python, j'ai ajouté le code suivant aux fichiers <a href="https://github.com/nelbab/python-histogrammes/blob/main/precipitation-2024/graphes_precipitations_2024.ipynb?short_path=bfc3bd6" target="_blank" title="Fichier graphes_précipitations_2024">`graphes_précipitations_2025.ipynb`</a>et <a href="https://github.com/nelbab/python-histogrammes/blob/main/precipitation-2025/graphes_precipitations_2025.ipynb?short_path=827828e" target="_blank" title="Fichier graphes_précipitations_2025">`graphes_précipitations_2025.ipynb`</a> :
 ```
 def generer_insertions_mysql(annee, donnees_precipitations):
 
@@ -435,7 +435,7 @@ def traiter_precipitations(annee):
     
     return donnees
 ```
-- Pour extraire les données des fichiers .csv, j'ai créé ce fichier `Python` `precipitations_import.sql`, <a href="https://github.com/nelbab/python-histogrammes/blob/main/meteo/meteo_converter.ipynb" target="_blank" title="Fichier meteo_converter">accessible ici</a>. <br>
+- Pour extraire les données des fichiers .csv, j'ai créé ce fichier `Python` `precipitations_import.sql`, <a href="https://github.com/nelbab/python-histogrammes/blob/main/meteo/meteo_converter.ipynb?short_path=e3cb779" target="_blank" title="Fichier meteo_converter">accessible ici</a>. <br>
 Ce code me permet d'ouvrir les fichiers et de traiter les données présentes.
 
 ### c. Insersion dans la table precipitations
