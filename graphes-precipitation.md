@@ -329,7 +329,7 @@ Cette interface permet à l’utilisateur de sélectionner les années à compar
     <label class="A1">Sélectionnez les années à comparer (7 maximum) :</label>
     <div class="selection-annees">
       <?php
-      for ($a = $anneeMinDisponible; $a <= $anneeMaxDisponible; $a++) {
+      foreach ($listeAnneesDisponibles as $a) {
           $checked = in_array($a, $annees_valides) ? 'checked' : '';
           $class_checked = in_array($a, $annees_valides) ? 'checked' : '';
           echo "<div class='annee-checkbox $class_checked'>";
