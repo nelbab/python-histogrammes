@@ -103,11 +103,37 @@ Améliorations de mes graphiques de précipitations.<br>
   - Jours de pluie
   - Maximum journalier (mm)
   - Ecart à la moyenne
-- 📅Moyennes Mensuelles sur la Période
+- 📅Tableau des moyennes Mensuelles sur la Période
   - Mois
   - Différentes années (mm)
   - Moyenne (mm)
-<br /><br />
+### f. Données journalières par mois
+Je me suis apperçu qu'il me manquait les histogrammes en images pour les années 2018 et 2019.
+- J'ai créé une nouvelle pages avec les données journalières par mois pour une année sous forme de tableaux et de listes.
+- Les listes m'ont permis de les générer en Pyton comme 2024 et 2025.
+- 📈 Statistiques pour chaque mois : 
+  - 🌧️ Total pluie (mm)
+  - ❄️ Total neige (cm)
+  - 🌧️ Jours avec pluie
+  - ❄️ Jours avec neige
+  - 📈 Max pluie (mm)
+  - 📈 Max neige (cm)
+- 📅Tableau journalier
+  - 🌧️ Pluie (mm)
+  - ❄️ Neige (cm)
+- 🗒️Liste sous cette forme :
+  - 🌧️ Liste pluie (mm) :
+[0,18,0,7,20,5,5.5,12,19,13,0.5,0,0,0,0,0,0,0,0,0,0,3.5,5.5,3,8.5,10.5,23,8,10.5,3,1]<br>
+  - ❄️ Liste neige (cm) :
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]<br>
+  - Avec des boutons pour copier les listes
+  ```
+  <div class="liste-donnees">
+      <strong>🌧️ Liste pluie (mm) :</strong>
+      [<?php echo implode(',', $listePluie); ?>]
+  </div>
+  ```
+<br />
 
 ## 🔗 5. Voici les liens :
 
@@ -118,6 +144,7 @@ Améliorations de mes graphiques de précipitations.<br>
 | Cumuls mensuels                 | <a href="http://nelly.babin.free.fr/meteo/cumuls_mensuels.php" target="_blank">Voir la page</a>    | Cumuls pluie/neige par mois sur une année                  |
 | Cumuls annuels                  | <a href="http://nelly.babin.free.fr/meteo/cumuls_annuels.php" target="_blank">Voir la page</a>     | Cumuls pluie/neige par année sur une période               |
 | Courbes annuelles comparatives  | <a href="http://nelly.babin.free.fr/meteo/comparaison-annuel.php" target="_blank">Voir la page</a> | Comparaison annuelle de la pluie sur 12 mois               |
+| Données journalières par mois  | <a href="http://nelly.babin.free.fr/meteo/donnees_journalieres.php" target="_blank">Voir la page</a> | Données journalières par mois pour une année              |
 <br />
 
 ## 6. 🖥️ Captures d'écrans : 
@@ -133,6 +160,8 @@ Améliorations de mes graphiques de précipitations.<br>
 <img style="margin: 10px" src="images/cumuls_annuels.png" alt="Cumuls annuels" title="Cumuls annuels" height="200px" />
 - Courbes annuelles comparatives de pluie de plusieurs années
 <img style="margin: 10px" src="images/comparaison_annuelle.png" alt="Cumuls annuels" title="Cumuls annuels" height="200px" />
+- Données journalières par mois pour une année
+<img style="margin: 10px" src="images/donnees_journalieres.png" alt="donnees journalières" title="donnees journalières" height="200px" />
 <br /><br />
 
 ## 7. 🧩 Codes spécifiques utilisés
