@@ -127,12 +127,6 @@ Je me suis apperçu qu'il me manquait les histogrammes en images pour les année
   - ❄️ Liste neige (cm) :
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]<br>
   - Avec des boutons pour copier les listes
-  ```
-  <div class="liste-donnees">
-      <strong>🌧️ Liste pluie (mm) :</strong>
-      [<?php echo implode(',', $listePluie); ?>]
-  </div>
-  ```
 <br />
 
 ## 🔗 5. Voici les liens :
@@ -383,6 +377,87 @@ function limitSelection(currentCheckbox) {
       alert('Vous ne pouvez sélectionner que 7 années maximum.');
   }    
   updateCheckboxStyle(currentCheckbox);
+}
+```
+### i. Copie de liste en Javascript
+```
+function copierListe(texte, type) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texte).then(function() {
+            alert('Liste ' + type + ' copiée dans le presse-papiers !');
+        }).catch(function(err) {
+            console.log('Erreur lors de la copie : ', err);
+            // Fallback vers méthode manuelle
+            afficherTextePourCopie(texte, type);
+        });
+    } else {
+        afficherTextePourCopie(texte, type);
+    }
+}
+```
+```        
+function afficherTextePourCopie(texte, type) {
+    var message = 'Copiez cette liste ' + type + ' :\n\n' + texte;
+    
+    var textarea = document.createElement('textarea');
+    textarea.value = texte;
+    document.body.appendChild(textarea);
+    
+    try {
+        textarea.select();
+        var reussi = document.execCommand('copy');
+        document.body.removeChild(textarea);
+        
+        if (reussi) {
+            alert('Liste ' + type + ' copiée dans le presse-papiers !');
+        } else {
+            alert(message);
+        }
+    } catch (err) {
+        document.body.removeChild(textarea);
+        alert(message);
+    }
+}
+
+if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', ajouterBoutonsCopie);
+} else if (document.attachEvent) {
+    document.attachEvent('onreadystatechange', function() {
+        if (document.readyState === 'complete') {
+            ajouterBoutonsCopie();
+        }
+    });
+}
+```
+```       
+function ajouterBoutonsCopie() {
+    var listes = document.getElementsByClassName ? 
+        document.getElementsByClassName('liste-donnees') : 
+        document.querySelectorAll('.liste-donnees');
+    
+    for (var i = 0; i < listes.length; i++) {
+        var liste = listes[i];
+        var texte = liste.textContent || liste.innerText;
+        var texteArray = texte.split(':');
+        if (texteArray.length > 1) {
+            var donnees = texteArray[1].replace(/^\s+|\s+$/g, ''); // trim
+            var type = texte.indexOf('pluie') !== -1 ? 'pluie' : 'neige';
+            
+            var bouton = document.createElement('button');
+            bouton.innerHTML = '&#128203; Copier';
+            bouton.className = 'boutonMeteo';
+            bouton.style.marginLeft = '10px';
+            bouton.style.fontSize = '12px';
+            bouton.style.padding = '5px 10px';            
+            bouton.onclick = (function(data, typeData) {
+                return function() {
+                    copierListe(data, typeData);
+                };
+            })(donnees, type);
+            
+            liste.appendChild(bouton);
+        }
+    }
 }
 ```
 <br />
