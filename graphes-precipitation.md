@@ -28,7 +28,7 @@ Améliorations de mes graphiques de précipitations.<br>
 <a href="https://code.visualstudio.com/" target="_blank"><img style="margin: 10px" src="images/visualStudiocode.png" alt="Visual Studio Code" title="Visual Studio Code" height="50" /></a>
 <a href="https://httpd.apache.org" target="_blank"><img style="margin: 10px" src="images/apache.png" alt="Apache" title="Apache" height="50" /></a>  
 
-## 4. Détail des pages :
+## 4. 🧩 Détail des pages :
 
 ### a. Histogramme d'un mois
 - Histogramme avec 2 barres du mois sélectionné de pluie et de neige
@@ -127,6 +127,16 @@ Je me suis apperçu qu'il me manquait les histogrammes en images pour les année
   - ❄️ Liste neige (cm) :
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]<br>
   - Avec des boutons pour copier les listes
+### h. Moyennes mensuelles pluie et neige
+- Histogramme avec 2 barres par mois de pluie et de neige.
+- Utilisation de la totalité des données.
+- Statistiques : 
+  - 🌧️ Total période (mm)
+  - 📊 Moyenne annuelle (mm)
+  - 📊 Moyenne mensuelle (mm)
+  - ❄️ Total période (cm)
+  - 📊 Moyenne annuelle (cm)
+  - 📊 Moyenne mensuelle (cm)
 <br />
 
 ## 🔗 5. Voici les liens :
@@ -138,6 +148,7 @@ Je me suis apperçu qu'il me manquait les histogrammes en images pour les année
 | Cumuls mensuels                 | <a href="http://nelly.babin.free.fr/meteo/cumuls_mensuels.php" target="_blank">Voir la page</a>    | Cumuls pluie/neige par mois sur une année                  |
 | Cumuls annuels                  | <a href="http://nelly.babin.free.fr/meteo/cumuls_annuels.php" target="_blank">Voir la page</a>     | Cumuls pluie/neige par année sur une période               |
 | Courbes annuelles comparatives  | <a href="http://nelly.babin.free.fr/meteo/comparaison-annuel.php" target="_blank">Voir la page</a> | Comparaison annuelle de la pluie sur 12 mois               |
+| Courbes annuelles comparatives  | <a href="http://nelly.babin.free.fr/meteo/moyenne_mensuelle.php" target="_blank">Voir la page</a> | Moyennes mensuelles              |
 | Données journalières par mois  | <a href="http://nelly.babin.free.fr/meteo/donnees_journalieres.php" target="_blank">Voir la page</a> | Données journalières par mois pour une année              |
 <br />
 
@@ -154,6 +165,8 @@ Je me suis apperçu qu'il me manquait les histogrammes en images pour les année
 <img style="margin: 10px" src="images/cumuls_annuels.png" alt="Cumuls annuels" title="Cumuls annuels" height="200px" />
 - Courbes annuelles comparatives de pluie de plusieurs années
 <img style="margin: 10px" src="images/comparaison_annuelle.png" alt="Cumuls annuels" title="Cumuls annuels" height="200px" />
+- Moyennes mensuelles
+<img style="margin: 10px" src="images/moyenne_mensuelle.png" alt="Moyennes mensuelles" title="Moyennes mensuelles" height="200px" />  
 - Données journalières par mois pour une année
 <img style="margin: 10px" src="images/donnees_journalieres.png" alt="donnees journalières" title="donnees journalières" height="200px" />
 <br /><br />
@@ -259,6 +272,169 @@ const configMensuel = {
       }
   }
 };
+```
+Exemple du graphique de cumuls mensuels :
+```
+var config = {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Pluie (mm)',
+                            data: pluieData,
+                            backgroundColor: 'rgba(52, 152, 219, 0.8)',
+                            borderColor: 'rgba(52, 152, 219, 1)',
+                            borderWidth: 1,
+                            yAxisID: 'y',
+                            datalabels: {
+                                align: 'end',
+                                anchor: 'end',
+                                color: '#1e40af',
+                                font: {
+                                    size: 10,
+                                    weight: 'bold'
+                                },
+                                formatter: function(value) {
+                                    return value > 0 ? value + ' mm' : '';
+                                },
+                                display: function(context) {
+                                    const value = context.dataset.data[context.dataIndex];
+                                    return value > 0;
+                                }
+                            }
+                        },
+                        {
+                            label: 'Neige (cm)',
+                            data: neigeData,
+                            backgroundColor: 'rgba(149, 165, 166, 0.8)',
+                            borderColor: 'rgba(149, 165, 166, 1)',
+                            borderWidth: 1,
+                            yAxisID: 'y1',
+                            datalabels: {
+                                align: 'end',
+                                anchor: 'end',
+                                color: '#6b7280',
+                                font: {
+                                    size: 10,
+                                    weight: 'bold'
+                                },
+                                formatter: function(value) {
+                                    return value > 0 ? value + ' cm' : '';
+                                },
+                                display: function(context) {
+                                    const value = context.dataset.data[context.dataIndex];
+                                    return value > 0;
+                                }
+                            }
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    animation: {
+                        duration: 0 // Désactive l'animation pour éviter les problèmes de téléchargement
+                    },
+                    maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            top: 30,
+                            bottom: 10,
+                            left: 10,
+                            right: 10
+                        }
+                    },
+                    plugins: {
+                        datalabels: {
+                            display: true
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                title: function(context) {
+                                    return context[0].label + ' <?php echo $anneeSelectionnee; ?>';
+                                },
+                                label: function(context) {
+                                    const unit = context.dataset.label.includes('Pluie') ? 'mm' : 'cm';
+                                    return context.dataset.label + ': ' + context.parsed.y + ' ' + unit;
+                                }
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Cumuls mensuels de précipitations - Année <?php echo $anneeSelectionnee; ?>',
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            }
+                        },
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: { 
+                                display: true, 
+                                text: 'Mois',
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            },
+                            grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            type: 'linear',
+                            position: 'left',
+                            beginAtZero: true,
+                            suggestedMax: Math.max(...pluieData) * 1.1, // +10% d’espace
+                            title: {
+                                display: true,
+                                text: 'Pluie (mm)',
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(54, 162, 235, 0.3)'
+                            },
+                            ticks: {
+                                color: 'rgba(52, 152, 219, 1)'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            position: 'right',
+                            beginAtZero: true,
+                            suggestedMax: Math.max(...neigeData) * 1.1, // +10% d’espace
+                            grid: {
+                                drawOnChartArea: false, // évite que les lignes se superposent avec celles de pluie
+                                color: 'rgba(0, 0, 0, 0.2)', // couleur rouge semi-transparente
+                                borderWidth: 2,
+                                borderDash: [6, 4] // tirets : 6px plein, 4px vide
+                            },
+                            title: {
+                                display: true,
+                                text: 'Neige (cm)',
+                                font: {
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            },
+                            ticks: {
+                                color: 'rgba(149, 165, 166, 1)'
+                            },
+                        }
+                    }
+                },
+                plugins: [ChartDataLabels]
+            };
 ```
 ### g. Export du graphique en PDF avec jsPDF
 📥 <b>Importation de la librairie `jsPDF` : </b>
