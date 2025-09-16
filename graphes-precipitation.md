@@ -129,14 +129,23 @@ Je me suis apperçu qu'il me manquait les histogrammes en images pour les année
   - Avec des boutons pour copier les listes
 ### h. Moyennes mensuelles pluie et neige
 - Histogramme avec 2 barres par mois de pluie et de neige.
-- Utilisation de la totalité des données.
+- Ajout d'une entête d'informations des données utilisées :
+  - Période d'étude
+  - Nombre d'années
+  - Nombre de jours avec relevé
+  - Années absentes
+  - Dernier jour relevé
 - Statistiques : 
   - 🌧️ Total période (mm)
   - 📊 Moyenne annuelle (mm)
   - 📊 Moyenne mensuelle (mm)
+  - 🏆 Record journalier (mm)
+  - 📅 Jours de pluie/an
   - ❄️ Total période (cm)
   - 📊 Moyenne annuelle (cm)
   - 📊 Moyenne mensuelle (cm)
+  - 🏆 Record journalier (cm)
+  - 📅 Jours de neige/an
 <br />
 
 ## 🔗 5. Voici les liens :
@@ -148,7 +157,7 @@ Je me suis apperçu qu'il me manquait les histogrammes en images pour les année
 | Cumuls mensuels                 | <a href="http://nelly.babin.free.fr/meteo/cumuls_mensuels.php" target="_blank">Voir la page</a>    | Cumuls pluie/neige par mois sur une année                  |
 | Cumuls annuels                  | <a href="http://nelly.babin.free.fr/meteo/cumuls_annuels.php" target="_blank">Voir la page</a>     | Cumuls pluie/neige par année sur une période               |
 | Courbes annuelles comparatives  | <a href="http://nelly.babin.free.fr/meteo/comparaison-annuel.php" target="_blank">Voir la page</a> | Comparaison annuelle de la pluie sur 12 mois               |
-| Courbes annuelles comparatives  | <a href="http://nelly.babin.free.fr/meteo/moyenne_mensuelle.php" target="_blank">Voir la page</a> | Moyennes mensuelles              |
+| Moyennes mensuelles | <a href="http://nelly.babin.free.fr/meteo/moyenne_mensuelle.php" target="_blank">Voir la page</a> | Histogramme moyennes mensuelles pluie/neige              |
 | Données journalières par mois  | <a href="http://nelly.babin.free.fr/meteo/donnees_journalieres.php" target="_blank">Voir la page</a> | Données journalières par mois pour une année              |
 <br />
 
