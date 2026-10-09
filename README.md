@@ -77,7 +77,7 @@ Ce projet offre une manière simple et efficace de créer des graphiques des pr�
 | Cumuls annuels                  | <a href="http://nelly.babin.free.fr/meteo/cumuls_annuels.php" target="_blank">Voir la page</a>     | Cumuls pluie/neige par année sur une période               |
 | Courbes annuelles comparatives  | <a href="http://nelly.babin.free.fr/meteo/comparaison-annuel.php" target="_blank">Voir la page</a> | Comparaison annuelle de la pluie sur 12 mois               |
 | Données journalières par mois  | <a href="http://nelly.babin.free.fr/meteo/donnees_journalieres.php" target="_blank">Voir la page</a> | Données journalières par mois pour une année              |
-
+| 🆕 Comparaison d'une année avec la moyenne mensuelle                  | <a href="http://nelly.babin.free.fr/meteo/comparaison-moyenne.php" target="_blank">Voir la page</a>     | Une année comparée à la moyenne mensuelle, en histogrammes               |
 <br />
 📝 Dépôt du projet
 <a href="https://github.com/nelbab/python-histogrammes/blob/main/graphes-precipitation.md" target="_blank" title="Détail du développement en Chart.js">Détail du développement `Chart.js` </a>  <br/>

@@ -17,6 +17,24 @@ Améliorations de mes graphiques de précipitations.<br>
 - Téléchargement des graphiques en PNG ou PDF, avec inclusion des statistiques en PDF.
 - Ajout de statistiques (moyenne, maximum, minimum).
 - Ajout de tableaux statistiques.
+- 🆕 Ajout d'un histogramme comparant une année à la moyenne mensuelle.
+- 🆕 Ajout, sur la page d'un mois, de la tendance par rapport aux années précédentes et de deux classements (mois les plus pluvieux et mois les plus secs).
+
+💡 Pourquoi ces nouvelles statistiques ?
+
+En 2026, j'ai eu l'impression d'avoir un mois de février très pluvieux, suivi de mois beaucoup plus secs. Une question s'est alors posée : <b>est-ce vraiment inhabituel, ou est-ce dans la normale de mes relevés ?</b>
+
+Mes pages existantes affichaient des totaux, des moyennes et des records, mais elles ne répondaient pas à cette question :
+
+- Elles ne disaient pas <b>où se situe un mois précis par rapport à ce même mois les autres années</b>.
+- Elles ne montraient pas <b>quels mois d'une année s'écartent de la moyenne</b>, ni de combien.
+- Elles ne permettaient pas de savoir <b>combien d'années ont été plus pluvieuses ou plus sèches</b> qu'un mois donné.
+
+D'où ces ajouts :
+
+- 📊 <b>Année comparée à la moyenne mensuelle</b> : voir d'un coup d'œil les mois au-dessus ou en dessous de la moyenne.
+- 📈 <b>Tendance du mois</b> : écart à la moyenne des années précédentes, en mm et en %.
+- 🏆 <b>Classements</b> des mois les plus pluvieux et les plus secs : situer un mois parmi toutes les années relevées.
 
 ## 3. 🛠️ Technologies utilisées : 
 <a href="https://en.wikipedia.org/wiki/HTML5" target="_blank"><img style="margin: 10px" src="images/html5.png" alt="HTML5" title="HTML5" height="50" /></a>
@@ -146,7 +164,25 @@ Je me suis apperçu qu'il me manquait les histogrammes en images pour les année
   - 📊 Moyenne mensuelle (cm)
   - 🏆 Record journalier (cm)
   - 📅 Jours de neige/an
-<br />
+### i. 🆕 Année comparée à la moyenne mensuelle
+- Sélection d'une année dans une liste déroulante.
+- Histogramme avec 2 barres par mois : l'année sélectionnée et la moyenne mensuelle.
+- Histogramme des écarts à la moyenne : bleu pour un mois plus pluvieux, orange pour un mois plus sec.
+- La moyenne est calculée sans l'année affichée (pour avoir une vraie référence) et sans l'année en cours (incomplète).
+- Statistiques :
+  - 🌧️ Total de l'année (mm)
+  - 📊 Total des moyennes (mm)
+  - ↔️ Écart (mm et %)
+  - ⬆️ Mois le plus au-dessus de la moyenne
+  - ⬇️ Mois le plus en dessous de la moyenne
+- 📅 Tableau mois par mois
+  - Valeur de l'année (mm)
+  - Moyenne (mm)
+  - Ecart (mm et %)
+  
+Téléchargement des 2 histogrammes en PNG.
+
+ <br />
 
 ## 🔗 5. Voici les liens :
 
@@ -159,19 +195,24 @@ Je me suis apperçu qu'il me manquait les histogrammes en images pour les année
 | Courbes annuelles comparatives  | <a href="http://nelly.babin.free.fr/meteo/comparaison-annuel.php" target="_blank">Voir la page</a> | Comparaison annuelle de la pluie sur 12 mois               |
 | Moyennes mensuelles | <a href="http://nelly.babin.free.fr/meteo/moyenne_mensuelle.php" target="_blank">Voir la page</a> | Histogramme moyennes mensuelles pluie/neige              |
 | Données journalières par mois  | <a href="http://nelly.babin.free.fr/meteo/donnees_journalieres.php" target="_blank">Voir la page</a> | Données journalières par mois pour une année              |
+| 🆕 Année vs moyenne mensuelle  | <a href="http://nelly.babin.free.fr/meteo/comparaison-moyenne.php" target="_blank">Voir la page</a> | Une année comparée à la moyenne mensuelle, en histogrammes              |
 <br />
 
 ## 6. 🖥️ Captures d'écrans : 
 
 🎴Ecran des nouveaux graphiques :<br />
 - Histogramme d'un mois
-<img style="margin: 10px" src="images/dynamique.png" alt="Histogramme d'un mois" title="Histogramme d'un mois" height="200px" />
+<img style="margin: 10px" src="images/dynamique.png" alt="Histogramme d'un mois" title="Histogramme d'un mois" height="200px" /><br />
+🆕 Tendance du mois et classements
+<img style="margin: 10px" src="images/tendance-mois-classements.png" alt="Tendance du mois et classements" title="Tendance du mois et classements" height="200px" /><br />
 - Cumuls mensuels
 <img style="margin: 10px" src="images/cumuls_mensuels.png" alt="Cumuls mensuels" title="Cumuls mensuels" height="200px" />  
 - Courbes mensuelles comparatives de pluie de plusieurs années
 <img style="margin: 10px" src="images/comparaison.png" alt="Courbes comparatives de pluie" title="Courbes comparatives de pluie" height="200px" />
 - Cumuls annuels
-<img style="margin: 10px" src="images/cumuls_annuels.png" alt="Cumuls annuels" title="Cumuls annuels" height="200px" />
+<img style="margin: 10px" src="images/comparaison-moyenne.png" alt="Cumuls annuels" title="Cumuls annuels" height="200px" />
+- 🆕 Comparaison d'une année avec la moyenne mensuelle
+<img style="margin: 10px" src="images/tendance-mois-classements.png" alt="Comparaison d'une année avec la moyenne mensuelle" title="Comparaison d'une année avec la moyenne mensuelle" height="200px" /><br />
 - Courbes annuelles comparatives de pluie de plusieurs années
 <img style="margin: 10px" src="images/comparaison_annuelle.png" alt="Cumuls annuels" title="Cumuls annuels" height="200px" />
 - Moyennes mensuelles
@@ -754,3 +795,5 @@ En somme, ce projet a été une excellente opportunité pour :
 - Rendre mes visualisations plus attractives et fonctionnelles.
 - Manipuler les données de ma base `MySQL`.
 - Manipuler des statistiques.
+- Répondre à une vraie question (« mon mois de février 2026 est-il normal ? ») en créant des indicateurs adaptés : tendance, écart à la moyenne, classements.
+- Adapter le code à un hébergement ancien (free) (fonctions mysql_*, array()) tout en gardant des statistiques riches.
