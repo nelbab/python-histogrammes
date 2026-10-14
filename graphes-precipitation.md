@@ -17,7 +17,7 @@ Améliorations de mes graphiques de précipitations.<br>
 - Téléchargement des graphiques en PNG ou PDF, avec inclusion des statistiques en PDF.
 - Ajout de statistiques (moyenne, maximum, minimum).
 - Ajout de tableaux statistiques.
-- 🆕 Ajout d'un histogramme comparant une année à la moyenne mensuelle.
+- 🆕 Ajout d'un histogramme comparant une année à la moyenne mensuelle avec la tendance par rapport aux années précédentes.
 - 🆕 Ajout, sur la page d'un mois, de la tendance par rapport aux années précédentes et de deux classements (mois les plus pluvieux et mois les plus secs).
 
 💡 Pourquoi ces nouvelles statistiques ?

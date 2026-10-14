@@ -1,3 +1,7 @@
+id_ed25519*
+*.pem
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
